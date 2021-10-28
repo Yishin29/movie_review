@@ -1,0 +1,34 @@
+# 웹 크롤링
+# 다음 뉴스의 기사와 본문을 수집하는 코드
+
+import requests
+from bs4 import BeautifulSoup
+
+url = 'https://news.v.daum.net/v/20211026100045868'
+
+# 1.requests 라이브러리 써서 해당 URL 소스코드 가져오기
+result = requests.get(url)
+# print(result.text)
+
+# 2.BeautifulSoup 라이브러리 사용해서 원하는 정보만 추출
+doc = BeautifulSoup(result.text, 'html.parser')
+
+# select 사용해서 데이터를 수집 => list type []
+# h3 태그에서 class가 tit_view인 tag를 가져오세요
+title = doc.select('h3.tit_view')[0].get_text() #. => class
+contents = doc.select('section p')
+contents.pop(-1) # 마지막 정보 삭제
+
+#자손 선택자: class나 id 정보 없으면 상위 태그 내에서 고를 수 있다
+
+#(len(contents))
+#for info in contents:
+#    print (info.get_text())
+
+content = ''
+for info in contents:
+    content += info.get_text()
+
+print('■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■')
+print('# TITLE: {}'.format(title))
+print('# CONTENTS: {}'.format(content))

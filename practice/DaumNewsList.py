@@ -25,6 +25,6 @@ for i, href in enumerate(url_list):
         content += info.get_text()
 
     print('■■ NEWS -> {} ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■'.format(i+1))
-    print('# URL: {}'.format(new_url))
+    #print('# URL: {}'.format(new_url))
     print('# TITLE: {}'.format(title))
-    print('# CONTENTS: {}'.format(content))
+    #print('# CONTENTS: {}'.format(content))

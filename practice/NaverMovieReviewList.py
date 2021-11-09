@@ -6,8 +6,6 @@ from bs4 import BeautifulSoup
 
 url = 'https://movie.naver.com/movie/bi/mi/pointWriteFormList.naver?code=14450&type=after&isActualPointWriteExecute=false&isMileageSubscriptionAlready=false&isMileageSubscriptionReject=false&page=2'
 result = requests.get(url)
-print(result)
-
 doc = BeautifulSoup(result.text, 'html.parser')
 
 review_list = doc.select('div.score_result > ul > li')

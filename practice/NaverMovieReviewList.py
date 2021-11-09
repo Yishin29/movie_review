@@ -29,6 +29,20 @@ for i, one in enumerate(review_list):
     #평점 수정
     score = one.select('div.star_score > em')[0].get_text()
 
+    #작성자 정보 수집
+    original_writer = one.select('div.score_reple em')[0].get_text().strip()
+    idx_end = original_writer.find('(')
+    writer = original_writer[0:idx_end]
+    #id:#
+    #class:.
+    #둘다 없으면: 부모
+
+    #날짜 정보 수집
+    original_date = one.select('div.score_reple em')[1].get_text()
+    date=original_date[0:10] #패턴 분석
+
     # 수집된 정보 출력
     print('SCORE => {}'.format(score))
     print('REVIEW => {}'.format(review))
+    print('by: {}'.format(writer))
+    print('at: {}'.format(date))
